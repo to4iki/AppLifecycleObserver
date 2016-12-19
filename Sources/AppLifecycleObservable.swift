@@ -22,4 +22,13 @@ public struct AppLifecycleSubject: AppLifecycleObservable {
     public func removeObserver<T: AppLifecycleObserver>(observer: T, name: NSNotification.Name) where T : UIViewController {
         notificationCenter.removeObserver(observer, name: name, object: nil)
     }
+    
+    public func notifyShouldSaveApplicationState() {
+        notificationCenter.post(name: .ShouldSaveApplicationState, object: nil)
+    }
+}
+
+public extension Notification.Name {
+    
+    public static let ShouldSaveApplicationState: NSNotification.Name = NSNotification.Name(rawValue: "ShouldSaveApplicationState")
 }

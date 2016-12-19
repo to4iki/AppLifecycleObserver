@@ -9,4 +9,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         return true
     }
+    
+    func application(_ application: UIApplication, shouldSaveApplicationState coder: NSCoder) -> Bool {
+        defer { AppLifecycleSubject.sharedInstance.notifyShouldSaveApplicationState() }
+        return true
+    }
+    
+    func application(_ application: UIApplication, shouldRestoreApplicationState coder: NSCoder) -> Bool {
+        return true
+    }
 }

@@ -1,8 +1,10 @@
 import Foundation
 
-public protocol AppLifecycleObserver: class {
+@objc public protocol AppLifecycleObserver: class {
 
-    func observeApplicationWillEnterForeground()
+    @objc optional func observeApplicationWillEnterForeground()
 
-    func observeApplicationDidEnterBackground()
+    @objc optional func observeApplicationDidEnterBackground()
+    
+    @objc optional func observeShouldSaveApplicationState()
 }
